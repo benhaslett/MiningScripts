@@ -12,6 +12,13 @@ There are a couple of JSON config files
 
 Keep these files in the folder with the script.
 When the script runs it reads those files. If nothing in MiningProofApps is running it'll check if the things in MiningApps are running and start them if requried.
+
+## Installation
+Download the repo and put it somewhere you can find it
+Run Setup-Mining.PS1 (probably best to do it elevated)
+This creates a job in scheduled tasks called "Mining Resilience"
+Go change the security options on that job to Run wether user is logged on or not
+
 ## TO DO
 * Auto Generate MiningProofApps from what's in the steam library (or other game store)
-* Fix the Installer script so that ot will setup the script to run from task scheduler with Run wther user is logged on or not checked...
+* Fix the Installer script so that ot will setup the script to run from task scheduler with Run wether user is logged on or not checked...
