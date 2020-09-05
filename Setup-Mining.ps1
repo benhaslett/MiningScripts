@@ -9,9 +9,7 @@ function New-ScheduledMiningScript{
         [Parameter(Mandatory=$true)] 
         $time,    
         [Parameter(Mandatory=$true)] 
-        $taskname,    
-        [Parameter(Mandatory=$true)] 
-        $userprincipal
+        $taskname
     )
     $argument = ("-file `""+$scriptpath+"`"")
     $A = New-ScheduledTaskAction -Execute "C:\windows\system32\WindowsPowerShell\v1.0\powershell.exe" -Argument $argument -WorkingDirectory $WorkingPath 
@@ -27,8 +25,7 @@ function New-ScheduledMiningScript{
 
 $ScriptPath = (Get-ChildItem "./start-mining.ps1").FullName
 $user = $env:USERNAME
-$userprincipal = "$env:USERDOMAIN\$env:USERNAME"
 $time =  "00:00"
 $TaskName = "Mining Resilience" 
 $WorkingPath = Split-Path -Parent $ScriptPath
-New-ScheduledMiningScript -taskname $TaskName -scriptpath $ScriptPath -user $user -userprincipal $userprincipal -time $time -WorkingPath $WorkingPath 
+New-ScheduledMiningScript -taskname $TaskName -scriptpath $ScriptPath -user $user -time $time -WorkingPath $WorkingPath 

@@ -35,8 +35,7 @@ if(!$busy){
     foreach ($path in $MinerPaths.Path){
         $MiningProcessName = ((Split-Path -Leaf $path) -split ".exe")[0]
         if($RunningProcs.ProcessName -contains $MiningProcessName ){
-            $LogEventText = "$MiningProcessName Already Running"
-            Write-Log -LogEventText $LogEventText
+            Write-Log -LogEventText "$MiningProcessName Already Running"
         }
         else{
             start-process -filepath $path -WorkingDirectory (Split-Path -Parent $path) -Verb runAs
