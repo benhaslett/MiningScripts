@@ -7,8 +7,9 @@
 * This script tries to make both activities co-exist with minimal effort.
 ## What it does
 There are a couple of JSON config files 
-* MiningApps.json - Put the full paths to your miners here (full path to a .exe is all that's supproted right now)
-* MiningProofApps.json - Put the Process name of the thread you want to take priority over mining
+* MiningApps.json - Put the full paths to your miners here (full path to a .exe is all that's supported right now)
+* MiningProofApps.json - Put the Process name of the thread you want to take priority over mining here
+
 Keep these files in the folder with the script.
 When the script runs it reads those files. If nothing in MiningProofApps is running it'll check if the things in MiningApps are running and start them if requried.
 ## TO DO
