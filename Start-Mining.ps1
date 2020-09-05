@@ -1,30 +1,50 @@
 $MinerPaths = get-content .\MiningApps.json | convertfrom-json
 $MiningProofApps = get-content .\MiningProofApps.json | convertfrom-json 
+$LogPath = ".\Start-Mining.log"
 $RunningProcs = Get-Process
 $busytest = @()
 $busy = $false
 
+function Write-Log{
+    [CmdletBinding()]
+    param (
+        [Parameter()]
+        [String]
+        $LogEventText
+    )
+    Write-Warning $LogEventText   
+    $temp = New-Object PSObject -Property @{
+        LogEventText    = $LogEventText
+        DateTime        = Get-Date
+    }
+    $temp | Select-Object DateTime, LogEventText | export-csv $LogPath -NoTypeInformation -Append       
+}
+
 foreach ($exe in $MiningProofApps.exe){
-    $temp = "" | Select-Object ProcessName, Running
-    $temp.ProcessName = $exe
-    $temp.Running = $RunningProcs.ProcessName -contains $exe
+    $temp = New-Object PSObject -Property @{
+        ProcessName = $exe
+        Running     = ($RunningProcs.ProcessName -contains $exe)
+    }
     $busytest += $temp
 }
 
 $busy = $busytest.Running | Where-Object {$_-eq $true} | Select-Object -First 1
 
 if(!$busy){
+    Write-Log -LogEventText "Found no MiningProofApps Running so resuming mining"
     foreach ($path in $MinerPaths.Path){
         $MiningProcessName = ((Split-Path -Leaf $path) -split ".exe")[0]
         if($RunningProcs.ProcessName -contains $MiningProcessName ){
-            Write-Information  "$MiningProcessName Already Running"
+            $LogEventText = "$MiningProcessName Already Running"
+            Write-Log -LogEventText $LogEventText
         }
         else{
             start-process -filepath $path -WorkingDirectory (Split-Path -Parent $path) -Verb runAs
+            Write-Log -LogEventText "Started $MiningProcessName"
         }
     }
 }
 else{
     $GameName = ($busytest | Where-Object {$_.Running -eq $true}).ProcessName
-    Write-Information  "Busy running $GameName Leave me alone"
+    Write-Log -LogEventText "MiningProofApp $GameName running so doing nothing"
 }

@@ -15,4 +15,3 @@ When the script runs it reads those files. If nothing in MiningProofApps is runn
 ## TO DO
 * Auto Generate MiningProofApps from what's in the steam library (or other game store)
 * Write an Installer script that will setup the script to run from task scheduler
-* Include some form of logging so the user has a chance to know what is going on  
