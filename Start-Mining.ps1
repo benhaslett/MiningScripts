@@ -46,5 +46,17 @@ if(!$busy){
 }
 else{
     $GameName = ($busytest | Where-Object {$_.Running -eq $true}).ProcessName
-    Write-Log -LogEventText "MiningProofApp $GameName running so doing nothing"
+    Write-Log -LogEventText "MiningProofApp $GameName running so halting Miners"
+    foreach ($path in $MinerPaths.Path){
+        $MiningProcessName = ((Split-Path -Leaf $path) -split ".exe")[0]
+        if($RunningProcs.ProcessName -contains $MiningProcessName ){
+            $LogEventText = "$MiningProcessName Running so stopping it"
+            $script = "Get-process **MiningProcessName** | Stop-Process" -replace "**MiningProcessName**", $MiningProcessName
+            Start-Process powershell -ArgumentList $script -Verb RunAs
+            Write-Log -LogEventText $LogEventText
+        }
+        else{
+            Write-Log -LogEventText "$MiningProcessName not running"
+        }
+    }
 }

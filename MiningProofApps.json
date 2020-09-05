@@ -10,5 +10,8 @@
     },
     {
         "exe":  "FlightSimulator"
+    },
+    {
+        "exe":  "NotePad"
     }
 ]
