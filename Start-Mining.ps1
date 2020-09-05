@@ -15,8 +15,9 @@ $busy = $busytest.Running | Where-Object {$_-eq $true} | Select-Object -First 1
 
 if(!$busy){
     foreach ($path in $MinerPaths.Path){
-        if($RunningProcs.ProcessName -contains ((Split-Path -Leaf $path) -split ".exe")[0] ){
-            Write-host "Already Running"
+        $MiningProcessName = ((Split-Path -Leaf $path) -split ".exe")[0]
+        if($RunningProcs.ProcessName -contains $MiningProcessName ){
+            Write-Information  "$MiningProcessName Already Running"
         }
         else{
             start-process -filepath $path -WorkingDirectory (Split-Path -Parent $path) -Verb runAs
@@ -24,5 +25,6 @@ if(!$busy){
     }
 }
 else{
-    Write-host "Busy Leave me alone"
+    $GameName = ($busytest | Where-Object {$_.Running -eq $true}).ProcessName
+    Write-Information  "Busy running $GameName Leave me alone"
 }
