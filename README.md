@@ -14,4 +14,4 @@ Keep these files in the folder with the script.
 When the script runs it reads those files. If nothing in MiningProofApps is running it'll check if the things in MiningApps are running and start them if requried.
 ## TO DO
 * Auto Generate MiningProofApps from what's in the steam library (or other game store)
-* Write an Installer script that will setup the script to run from task scheduler
+* Fix the Installer script so that ot will setup the script to run from task scheduler with Run wther user is logged on or not checked...

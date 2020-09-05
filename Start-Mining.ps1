@@ -51,7 +51,7 @@ else{
         $MiningProcessName = ((Split-Path -Leaf $path) -split ".exe")[0]
         if($RunningProcs.ProcessName -contains $MiningProcessName ){
             $LogEventText = "$MiningProcessName Running so stopping it"
-            $script = "Get-process **MiningProcessName** | Stop-Process" -replace "**MiningProcessName**", $MiningProcessName
+            $script = "Get-process MiningProcessName | Stop-Process" -replace "MiningProcessName", $MiningProcessName
             Start-Process powershell -ArgumentList $script -Verb RunAs
             Write-Log -LogEventText $LogEventText
         }
