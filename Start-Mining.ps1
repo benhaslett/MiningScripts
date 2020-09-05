@@ -15,7 +15,12 @@ $busy = $busytest.Running | Where-Object {$_-eq $true} | Select-Object -First 1
 
 if(!$busy){
     foreach ($path in $MinerPaths.Path){
-        start-process -filepath $path -WorkingDirectory (Split-Path -Parent $path)
+        if($RunningProcs.ProcessName -contains ((Split-Path -Leaf $path) -split ".exe")[0] ){
+            Write-host "Already Running"
+        }
+        else{
+            start-process -filepath $path -WorkingDirectory (Split-Path -Parent $path) -Verb runAs
+        }
     }
 }
 else{
