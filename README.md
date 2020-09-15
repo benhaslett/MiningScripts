@@ -8,7 +8,7 @@
 * This script tries to make both activities co-exist with minimal effort.
 ## What it does
 There are a couple of JSON config files 
-* MiningApps.json - Put the full paths to your miners here (full path to a .exe is all that's supported right now)
+* MiningApps.json - Put the full paths to your miners here (full path to a .exe in the Path Value, path to a launcher .bat in startcmd if you need to launch from bats)
 * MiningProofApps.json - Put the Process name of the thread you want to take priority over mining here
 
 Keep these files in the folder with the script.
