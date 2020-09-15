@@ -4,6 +4,9 @@
     },
     {
         "path":  "C:\\Users\\benh\\OneDrive\\Mining\\Ethereum\\Claymore's Dual Ethereum AMD+NVIDIA GPU Miner v15.0\\EthDcrMiner64.exe",
+    },
+    {
+        "path":  "C:\\Users\\benh\\OneDrive\\Mining\\Ethereum\\Claymore's Dual Ethereum AMD+NVIDIA GPU Miner v15.0\\EthDcrMiner64.exe",
 		"startcmd": "C:\\Users\\benh\\OneDrive\\Mining\\start_eth_mining.bat"
     }
 ]
