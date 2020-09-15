@@ -32,13 +32,17 @@ $busy = $busytest.Running | Where-Object {$_-eq $true} | Select-Object -First 1
 
 if(!$busy){
     Write-Log -LogEventText "Found no MiningProofApps Running so resuming mining"
-    foreach ($path in $MinerPaths.Path){
-        $MiningProcessName = ((Split-Path -Leaf $path) -split ".exe")[0]
+	$MinerPaths | Select-Object -Property path, startcmd | ForEach-Object {
+        $MiningProcessName = ((Split-Path -Leaf $_.path) -split ".exe")[0]
         if($RunningProcs.ProcessName -contains $MiningProcessName ){
             Write-Log -LogEventText "$MiningProcessName Already Running"
         }
-        else{
-            start-process -filepath $path -WorkingDirectory (Split-Path -Parent $path) -Verb runAs
+        else {
+            if ($_.startcmd -ne $null) {
+				start-process -filepath $_.startcmd -WorkingDirectory (Split-Path -Parent $_.startcmd) -Verb runAs
+				} else {
+				start-process -filepath $_.path -WorkingDirectory (Split-Path -Parent $_.path) -Verb runAs
+				}
             Write-Log -LogEventText "Started $MiningProcessName"
         }
     }
