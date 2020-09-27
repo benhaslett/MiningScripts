@@ -1,5 +1,5 @@
 # Mining Scripts
-## How to create reslience of mining operations on a PC used for Gaming
+## How to create resilience of mining operations on a PC used for Gaming
 * When you have one rig for Gaming and Mining.
 * You may play games on the computer you use for mining.
 * Keeping a Mining Process Running may be a priority for you.
