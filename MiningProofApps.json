@@ -45,9 +45,6 @@
         "exe":  "vrmonitor"
     },
     {
-        "exe":  "msedge"
-    },
-    {
         "exe":  "ForzaHorizon4"
     },
     {
@@ -58,6 +55,63 @@
     },
     {
         "exe":  "EoCApp"
+    },
+    {
+        "exe":  "Diablo III64"
+    },
+    {
+        "exe":  "AC2-Win64-Shipping"
+    },
+    {
+        "exe":  "Control_DX12"
+    },
+    {
+        "exe":  "Control_DX11"
+    },
+    {
+        "exe":  "Minecraft.Windows"
+    },
+    {
+        "exe":  "OUTRIDERS-Win64-Shipping"
+    },
+    {
+        "exe":  "MetroExodus"
+    },
+    {
+        "exe":  "DOOMEternalx64vk"
+    },
+    {
+        "exe":  "UE4Editor"
+    },
+    {
+        "exe":  "XenonRacer-Win64-Shipping"
+    },
+    {
+        "exe":  "UE4"
+    },
+    {
+        "exe":  "Powerslide"
+    },
+    {
+        "exe":  "MCC-Win64-Shipping"
+    },
+    {
+        "exe":  "1976"
+    },
+    {
+        "exe":  "TMForever"
+    },
+    {
+        "exe":  "TrackMania"
+    },
+    {
+        "exe":  "dirtrally2"
+    },
+    {
+        "exe":  "MK11_DX12"
+    },
+    {
+        "exe":  "MK11"
     }
 ] 
 
